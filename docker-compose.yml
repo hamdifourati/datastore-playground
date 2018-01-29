@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  datastore:
+    image: google/cloud-sdk:latest
+    hostname: datastore
+    expose:
+      - 8000
+    env_file:
+      - env.app
+    volumes:
+      - "$PWD/datastore-data:/datastore-data"
+    working_dir: "/datastore-data"
+    command: "gcloud beta emulators datastore start --project=$DATASTORE_PROJECT_ID --data-dir /datastore-data --host-port datastore:8000"
+  
+  # customize your dev runtime
+  app:
+    #build: app
+    image: node:8
+    env_file: env.app
+    volumes:
+      - "$PWD/app:/app"
+    working_dir: "/app"
+    #stdin_open: true
+    tty: true
+    command: bash
+    depends_on:
+      - datastore
