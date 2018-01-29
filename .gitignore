@@ -1,3 +1,6 @@
+datastore-data
+*.swp
+
 # Logs
 logs
 *.log
