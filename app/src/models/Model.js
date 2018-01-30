@@ -1,4 +1,4 @@
-const datastore = require('../datastore');
+const datastore = require('./datastore');
 
 class Model {
   constructor(kind) {
@@ -9,4 +9,4 @@ class Model {
 }
 
 
-modules.export = Model;
+module.exports = Model;
