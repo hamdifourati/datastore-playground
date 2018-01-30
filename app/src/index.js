@@ -1,7 +1,10 @@
+const logger  = require('./logger');
+
 const Task = require('./models/task/Task');
 
 
 const task = new Task('search');
 
 task.add()
-.catch((err) => { console.log('Error adding task : ', err);});
+.then((data) => { logger.info(`Added task ${data}`); })
+.catch((err) => { logger.error(`${err}`); });

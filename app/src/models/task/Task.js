@@ -33,7 +33,7 @@ class Task extends Model {
     ]
    };
   await this.datastore.save(entity)
-  console.log(`Added Task: ${this.name}`);
+  return this.name
   }
 }
 
